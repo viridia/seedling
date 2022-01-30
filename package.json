@@ -1,7 +1,7 @@
 {
   "name": "@faery/seedling",
   "version": "0.0.1",
-  "description": "Character model previewing app.",
+  "description": "3D three-growth simulator and model generator.",
   "main": "dist/main/index.cjs",
   "scripts": {
     "start": "node --experimental-json-modules scripts/watch.mjs"
