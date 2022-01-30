@@ -73,6 +73,17 @@ async function createWindow() {
         return result.filePaths.length > 0 ? result.filePaths[0] : undefined;
       });
   });
+
+  ipcMain.handle('open-save-as', (event, path) => {
+    return dialog.showSaveDialog(win!, {
+      properties: ['createDirectory', 'showOverwriteConfirmation'],
+      defaultPath: path,
+      title: 'Save model file',
+    }).then(result => {
+      return result.filePath;
+    });
+  });
+
 }
 
 app.whenReady().then(createWindow);

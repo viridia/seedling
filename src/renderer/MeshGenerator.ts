@@ -38,7 +38,9 @@ import { LeafStamp, TwigStem } from './leaf';
 import { drawLeafTexture } from './genLeafTexture';
 import { propertyMapToJson } from './properties/PropertyMap';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { GLTFExporter } from 'three/examples/jsm/exporters/GLTFExporter';
 import { EventBus } from './EventBus';
+import { Buffer } from 'buffer';
 // import { minimizeShadow } from './collision';
 
 // const GLTFExporter = require('./third-party/GLTFExporter.js');
@@ -318,15 +320,17 @@ export class MeshGenerator {
     scene.children.push(this.barkMesh, this.leafMesh);
 
     // Instantiate a exporter
-    // const exporter = new GLTFExporter();
-    // exporter.parse(
-    //   scene,
-    //   (gltf: any) => {
-    //     // console.log(gltf);
-    //     window.bridge.fs.writeFileSync(this.filePath!, Buffer.from(gltf));
-    //   },
-    //   { binary: true }
-    // );
+    const exporter = new GLTFExporter();
+    exporter.parse(
+      scene,
+      (gltf: any) => {
+        // console.log(gltf);
+        window.bridge.fs.writeFileSync(this.filePath!, Buffer.from(gltf));
+      },
+      undefined,
+      // @ts-ignore
+      { binary: true }
+    );
   }
 
   public reset() {

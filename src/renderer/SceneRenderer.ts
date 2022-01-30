@@ -27,7 +27,7 @@ export class SceneRenderer {
     this.render = this.render.bind(this);
     this.handleResize = this.handleResize.bind(this);
     this.handleWheel = this.handleWheel.bind(this);
-    this.pool.add(this.scene);
+    // this.pool.add(this.scene);
 
     const width = mount.clientWidth;
     const height = mount.clientHeight;
@@ -40,7 +40,7 @@ export class SceneRenderer {
     this.renderer = new WebGLRenderer({ antialias: true });
     this.renderer.setSize(width, height);
     this.renderer.setClearColor('#202030');
-    this.renderer.gammaFactor = 2.2;
+    // this.renderer.gammaFactor = 2.2;
     this.renderer.outputEncoding = sRGBEncoding;
     this.mount.appendChild(this.renderer.domElement);
 
